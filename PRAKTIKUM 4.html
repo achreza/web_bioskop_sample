@@ -1,0 +1,86 @@
+<html ng-app="cinemaApp">
+
+<head>
+	<title>Choose your bioskop!</title>
+	
+	<link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+	<div id="container" ng-controller="SeatController as bioskop">
+	
+		<!-- Daftar Film -->
+		<div id="movie-list" ng-if="bioskop.konten == 'film'">
+		
+			<h1>Jenis Pistol</h1>
+			
+			<ul>
+				<li ng-repeat="film in bioskop.daftarFilm" ng-click="bioskop.pilihKonten('kursi', film)">
+					<div class="image-box">
+						<img src="{{film.gambar}}" />
+					</div>
+					<span>{{film.nama}}</span>
+				</li>
+			</ul>
+			
+		</div>
+		
+		<!-- Daftar Kursi -->
+		<div id="seat-list" ng-if="bioskop.konten == 'kursi'">
+		
+			<div id="top-bar">
+				<h1>{{bioskop.filmTerpilih.nama}}</h1>
+				<a ng-click="bioskop.pilihKonten('film')">Kembali</a>
+			</div>
+			
+			<form ng-submit="bioskop.pesan()">
+			
+				<ul class="seat-row" ng-repeat="barisKursi in bioskop.filmTerpilih.tempatDuduk">
+				
+					<li class="seat-col" ng-repeat="deretKursi in barisKursi.kursi">
+					
+						<!-- Kuning / Hijau -->
+						<label ng-if="deretKursi.dipesan == false" class="choose-{{deretKursi.dipilih}}" ng-click=
+						"bioskop.centang()">
+							{{barisKursi.label}}{{deretKursi.nomor}}
+							
+							<!-- Inputan untuk memilih kursi -->
+							<input type="checkbox" ng-model="deretKursi.dipilih">
+						</label>
+						
+						<!-- Merah -->
+						<label ng-if="deretKursi.dipesan == true" class="booked">{{barisKursi.label}}{{deretKursi.nomor}}
+						</label>	
+					</li>
+				</ul>
+				
+				<table class="display-table">
+					<tr>
+						<th>{{bioskop.filmTerpilih.nama}} - Nomor Kursi</th>
+						<th>Harga</th>
+					</tr>
+					<tr ng-repeat="dipesan in bioskop.daftarPesan">
+						<td>{{bioskop.filmTerpilih.nama}} - {{dipesan.baris}}{{dipesan.nomor}}</td>
+						<td>{{bioskop.harga}}</td>
+					</tr>
+					<tr>
+						<th>Total</th>
+						<th>{{bioskop.total}}</th>
+					</tr>
+				</table>
+				
+				<input type="submit" value="PESAN" />
+				
+			</form>
+			
+		</div>
+		
+	</div>
+	
+</body>
+
+<script src='angular.min.js'></script>
+<script src='script.js'></script>
+
+</html>

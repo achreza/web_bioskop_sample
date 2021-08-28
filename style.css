@@ -1,0 +1,115 @@
+body {
+	background: url(WP.jpg);
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-position:cover;
+	background-size: cover;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#movie-list {
+	padding: 40px 0 0;
+	text-align: center;
+}
+#movie-list ul {
+	display: inline-block;
+}
+#movie-list ul:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+#movie-list li {
+	float: left;
+	margin: 15px 20px;
+	cursor: pointer;
+}
+#movie-list li .image-box {
+	width: 220px;
+	height: 320px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+#movie-list li .image-box img {
+	max-width: 100%;
+	height: auto;
+}
+
+#seat-list {
+	width: 960px;
+	margin: 0 auto;
+	text-align: center;
+}
+#top-bar {
+	margin-top: 40px;
+}
+#top-bar a {
+	cursor: pointer;
+}
+
+.seat-row {
+	display: inline-block;	
+}
+
+.seat-row:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+.seat-col {
+	float: left;
+}
+.seat-col label {
+	cursor: pointer;
+	display: block;
+	padding: 15px 0px;
+	text-align: center;
+	min-width: 62px;
+	margin: 20px 10px 0;
+	color: #ffffff;
+	border-radius: 4px;
+}
+.seat-col label.choose-false {
+	background: #2bcbba;
+}
+.seat-col label.choose-true {
+	background: #f7b731;
+}
+.seat-col label.booked {
+	background: #fc5c65;
+}
+.seat-col input[type=checkbox] {
+	display: none;
+}
+
+input[type=submit] {
+	display: block;
+	margin: 20px auto 0;
+	padding: 20px;
+	background: #fc5c65;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #ffffff;
+}
+
+table.display-table {
+	margin-top: 80px;
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-radius: 8px;
+	overflow: hidden;
+}
+table.display-table th {
+	padding: 10px;
+	background: #d1d8e0;
+}
+table.display-table td {
+	padding: 10px;
+}
